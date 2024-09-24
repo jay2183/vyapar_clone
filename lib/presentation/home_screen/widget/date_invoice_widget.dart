@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vyapar_clone/core/common/widget/verticle_divider.dart';
 import 'package:vyapar_clone/core/constatnts/colors.dart';
 import 'package:vyapar_clone/core/constatnts/text_style.dart';
 
 class DateInvoiceWidget extends StatelessWidget {
-  DateInvoiceWidget({super.key, this.invoiceNumber, this.date});
+  DateInvoiceWidget({super.key, this.invoiceNumber, this.date,this.titleOne,this.titleTwo});
   final String? invoiceNumber;
   final String? date;
+  final String? titleOne;
+  final String? titleTwo;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class DateInvoiceWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Invoce No.",
+                     titleOne?? "Invoce No.",
                       style: interFontBlack(context, color: Colorconst.cGrey),
                     ),
                     SizedBox(
@@ -47,7 +50,7 @@ class DateInvoiceWidget extends StatelessWidget {
                             angle: -1.55,
                             child: Icon(
                               Icons.arrow_back_ios_new_outlined,
-                              size: 12,
+                              size: 12.sp,
                               color: Colors.black45,
                             ))
                       ],
@@ -69,11 +72,11 @@ class DateInvoiceWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Date",
+                       titleTwo?? "Date",
                         style: interFontBlack(context, color: Colorconst.cGrey),
                       ),
                       SizedBox(
-                        height: 4,
+                        height: 4.h,
                       ),
                       Row(
                         children: [
@@ -89,7 +92,7 @@ class DateInvoiceWidget extends StatelessWidget {
                               angle: -1.55,
                               child: Icon(
                                 Icons.arrow_back_ios_new_outlined,
-                                size: 12,
+                                size: 12.sp,
                                 color: Colors.black45,
                               ))
                         ],

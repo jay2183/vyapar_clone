@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vyapar_clone/presentation/menu_screen/widget/custom_page_view.dart';
+
+import '../sub_menu_screen/purchase_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -123,7 +126,7 @@ class _MenuScreenState extends State<MenuScreen> {
       {
         'icon': Icons.shopping_cart,
         'label': 'Purchase',
-        'onTap': () {/*  onTap action */}
+        'onTap': ()=>Get.to(()=>PurchaseScreen())
       },
       {
         'icon': Icons.payment_outlined,

@@ -30,9 +30,7 @@ class PaymentTypeBtnWidget extends StatelessWidget {
               child: Text(
                 btnName?? "Credit",
                 style: interFontBlack(
-                    fontsize: 13.sp,
-                    color:
-                        index == selectedIndex ? Colors.white : Colorconst.cGrey),
+                   context),
               ),
             ),
           ),

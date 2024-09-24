@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vyapar_clone/core/constatnts/colors.dart';
 import 'package:vyapar_clone/core/constatnts/text_style.dart';
 
@@ -24,19 +23,19 @@ class HeaderButtons extends StatelessWidget {
         decoration: BoxDecoration(
             color: index == selectedIndex ? Colorconst.cLightRed : Colors.white,
             border: Border.all(
-                width: 1.w,
+                width: 1,
                 color: index == selectedIndex
                     ? Colorconst.cRed
                     : Colorconst.cGrey),
-            borderRadius: BorderRadius.circular(24.r)),
+            borderRadius: BorderRadius.circular(24)),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 5.h),
+          padding: EdgeInsets.symmetric(vertical: 5),
           child: Center(
               child: Text(
             butnTxt ?? "Transaction Details",
             style: index == selectedIndex
-                ? interFontBlack(fontsize: 13.sp, color: Colorconst.cRed)
-                : interFontGrey(fontsize: 13.sp, color: Colorconst.cGrey),
+                ? interFontBlack(context)
+                : interFontGrey(context),
           )),
         ),
       ),

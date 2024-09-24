@@ -22,10 +22,10 @@ final Repository repository = Repository();
           return SaleListScreen();
          }
          else if(index==1){
-          return AddSaleScreen();
+          return AddSaleInvoiceScreen();
          }
          else if(index==2){
-          return AddItemScreen();
+          return AddItemSaleScreen();
          }
          
          else{

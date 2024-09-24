@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:vyapar_clone/presentation/home_screen/view/home_screen.dart';
+import 'package:vyapar_clone/presentation/menu_screen/view/menu_screen.dart';
 
 
 
@@ -40,7 +41,7 @@ class BottomNavigationController extends GetxController {
    HomeScreen(),
    Center(child:  Text("Dash board",style: TextStyle(color: Colors.red,fontSize: 20.sp))),
    Center(child:  Text("Items",style: TextStyle(color: Colors.red,fontSize: 20.sp))),
-   Center(child:  Text("Menu",style: TextStyle(color: Colors.red,fontSize: 20.sp))),
+MenuScreen(),
    Center(child:  Text("GET PREMIUM",style: TextStyle(color: Colors.red,fontSize: 20.sp))),
     
      

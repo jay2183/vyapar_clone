@@ -1,28 +1,21 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:vyapar_clone/core/constatnts/colors.dart';
 import 'package:vyapar_clone/core/constatnts/images.dart';
 import 'package:vyapar_clone/core/constatnts/text_style.dart';
-import 'package:vyapar_clone/core/models/sale_model.dart';
-import 'package:vyapar_clone/presentation/home_screen/controller/home_screen_controller.dart';
+import 'package:vyapar_clone/presentation/home_screen/sub_screens/add_sale.dart';
 
 import '../widget/header.dart';
 import '../widget/header_buttons.dart';
-import '../widget/sale_card.dart';
 
 class SaleListScreen extends StatelessWidget {
   SaleListScreen({super.key});
 
-  final HomeController _controller = Get.find<HomeController>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Obx(() {
-        return Stack(
+        backgroundColor: Colors.white,
+        body: Stack(
           children: [
             Column(
               children: [
@@ -44,10 +37,8 @@ class SaleListScreen extends StatelessWidget {
                           children: [
                             HeaderButtons(
                               index: 0,
-                              selectedIndex:
-                                  _controller.selectedHeaderBtnIndex.value,
-                              onSingleTap: () =>
-                                  _controller.onHeaderButtonTap(0),
+                              selectedIndex: 0,
+                              onSingleTap: () {},
                             ),
                             SizedBox(
                               width: 16.w,
@@ -55,10 +46,8 @@ class SaleListScreen extends StatelessWidget {
                             HeaderButtons(
                               butnTxt: "Party Details",
                               index: 1,
-                              selectedIndex:
-                                  _controller.selectedHeaderBtnIndex.value,
-                              onSingleTap: () =>
-                                  _controller.onHeaderButtonTap(1),
+                              selectedIndex: 0,
+                              onSingleTap: () {},
                             )
                           ],
                         ),
@@ -99,7 +88,7 @@ class SaleListScreen extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   "Quick Links",
-                                  style: interFontBlack(fontsize: 13.sp),
+                                  style: interFontBlack(context),
                                 ),
                                 SizedBox(
                                   height: 10.h,
@@ -138,11 +127,8 @@ class SaleListScreen extends StatelessWidget {
                           height: 10.h,
                         ),
                         TextFormField(
-                          controller: _controller.searchTxtCnt,
-                          onChanged: (value) {
-                            _controller.searchByDateInvoiceNum(value);
-                          },
-                          style: interFontBlack(fontsize: 14.sp,color: Colors.black),
+                          style: interFontBlack(
+                             context),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               filled: true,
@@ -156,9 +142,8 @@ class SaleListScreen extends StatelessWidget {
                                   size: 25.sp,
                                 ),
                               ),
-                              
                               hintText: "Search for a transaction",
-                              hintStyle: interFontGrey(fontsize: 14.sp),
+                              hintStyle: interFontGrey(context),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.r),
                                   borderSide: BorderSide.none)),
@@ -167,25 +152,14 @@ class SaleListScreen extends StatelessWidget {
                           height: 10.h,
                         ),
                         Expanded(
-                            child:_controller.searchableSale.length.toInt()==0?Center(child: Text("Empty list",style: interFontBlack(color: Colors.black,fontsize: 24.sp,fontWeight: FontWeight.w600),),): ListView.builder(
-                          controller: _controller.scrollController,
-                          itemCount: _controller.searchableSale.length,
-                          itemBuilder: (context, index) {
-                            SaleModel obj = _controller.saleList[index];
-                           
-                            return Padding(
-                              padding: EdgeInsets.only(bottom: 8.h),
-                              child: SaleCard(
-                               object: obj,
-                               deleteFunction: () {
-                                 _controller.deleteSale(obj.id);
-                               },
-
-
-                              ),
-                            );
-                          },
-                        ))
+                          child: Center(
+                            child: Text(
+                              "Empty list",
+                              style: interFontBlack(
+                                  context),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -194,21 +168,23 @@ class SaleListScreen extends StatelessWidget {
             ),
             Positioned(
               bottom: 16.0,
-              left: MediaQuery.of(context).size.width/3.2,
-              right: MediaQuery.of(context).size.width/3.2,
-             
+              left: MediaQuery.of(context).size.width / 3.2,
+              right: MediaQuery.of(context).size.width / 3.2,
               child: AnimatedOpacity(
-                duration:const Duration(milliseconds: 350),
-                opacity: _controller.isAddButnVisible.value ? 1.0 : 0.0,
+                duration: const Duration(milliseconds: 350),
+                opacity: 1.0,
                 child: InkWell(
-                  onTap:()=> _controller.setCurrenScreen(1) ,
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AddSaleInvoiceScreen()));
+                  },
                   child: Container(
-                   
                     decoration: BoxDecoration(
                         color: Colorconst.cRed,
                         borderRadius: BorderRadius.circular(24.r)),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 9.h,horizontal: 12.w),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 9.h, horizontal: 12.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -220,9 +196,7 @@ class SaleListScreen extends StatelessWidget {
                           Text(
                             "Add New Sale",
                             style: interFontGrey(
-                                color: Colors.white,
-                                fontsize: 12.sp,
-                                fontWeight: FontWeight.w400),
+                                context),
                           )
                         ],
                       ),
@@ -232,10 +206,6 @@ class SaleListScreen extends StatelessWidget {
               ),
             ),
           ],
-        );
-      }),
-    );
+        ));
   }
-
-  
 }

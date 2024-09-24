@@ -1,48 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vyapar_clone/core/constatnts/colors.dart';
 import 'package:vyapar_clone/core/constatnts/text_style.dart';
 
-
-
 class AddItemButton extends StatelessWidget {
-   AddItemButton({super.key,this.onTap});
-final Function()?onTap;
+  AddItemButton({
+    super.key,
+    this.onTap,
+  });
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5.r),
-            border: Border.all(width: 1.w, color: Colorconst.cGrey)),
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(width: 2, color: Colorconst.cGrey)),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.h),
+          padding: EdgeInsets.symmetric(vertical: screenWidth * .01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 8.r,
-                backgroundColor: Colors.blue,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 14.sp,
-                ),
+              Icon(
+                Icons.add_circle,
+                color: Colorconst.cBlue,
               ),
               SizedBox(
-                width: 5.w,
+                width: screenWidth * .02,
               ),
               Text(
                 "Add Items",
-                style: interFontBlack(color: Colors.blue, fontsize: 12.sp),
+                style: interFontBlack(context, color: Colorconst.cBlue,fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                width: 4.w,
+                width: screenWidth * .01,
               ),
               Text(
                 "(Optional)",
-                style: interFontBlack(color: Colorconst.cGrey, fontsize: 12.sp),
+                style: interFontBlack(context, color: Colorconst.cGrey),
               ),
             ],
           ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vyapar_clone/core/constatnts/colors.dart';
 import 'package:vyapar_clone/core/constatnts/text_style.dart';
-
 
 class BottomButton extends StatelessWidget {
   BottomButton({super.key, this.onClickSaveNew, this.onClickSave});
@@ -11,7 +10,10 @@ class BottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Container(
+      height: screenHeight * .058,
       color: Colors.white,
       child: Row(
         children: [
@@ -23,15 +25,14 @@ class BottomButton extends StatelessWidget {
                 onTap: onClickSaveNew,
                 child: Container(
                   color: Colors.white,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 13.h),
-                    child: Center(
-                        child: Text(
-                      "Save & New",
-                      style:
-                          interFontGrey(fontsize: 13.sp, color: Colors.black54),
-                    )),
-                  ),
+                  child: Center(
+                      child: Text(
+                    "Save & New",
+                    style: interFontGrey(context,
+                        color: Colorconst.cBlack,
+                        fontsize: 15,
+                        fontWeight: FontWeight.bold),
+                  )),
                 ),
               )),
               Expanded(
@@ -39,28 +40,27 @@ class BottomButton extends StatelessWidget {
                 onTap: onClickSave,
                 child: Container(
                   color: Colors.blue,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 13.h),
-                    child: Center(
-                        child: Text(
-                      "Save",
-                      style:
-                          interFontGrey(fontsize: 13.sp, color: Colors.black54),
-                    )),
-                  ),
+                  child: Center(
+                      child: Text(
+                    "Save",
+                    style: interFontGrey(context,
+                        color: Colorconst.cwhite,
+                        fontsize: 15,
+                        fontWeight: FontWeight.bold),
+                  )),
                 ),
               )),
             ],
           )),
           SizedBox(
-            width: 8.w,
+            width: screenWidth * .06,
           ),
           Transform(
             transform: Matrix4.diagonal3Values(-1, 1, 1),
             alignment: Alignment.center,
             child: Icon(
-              Icons.reply_outlined,
-              size: 23.sp,
+              Icons.reply,
+              size: 23,
               color: Colors.blue,
             ),
           )

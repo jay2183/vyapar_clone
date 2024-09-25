@@ -52,7 +52,7 @@ class DateInvoiceWidget extends StatelessWidget {
                               Icons.arrow_back_ios_new_outlined,
                               size: 12.sp,
                               color: Colors.black45,
-                            ))
+                            )),
                       ],
                     ),
                   ],

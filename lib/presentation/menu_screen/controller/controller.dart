@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class MenuController extends GetxController{
+class MenuGetController extends GetxController{
 
-  
+   RxInt selectedPurchaseTabIndex = 0.obs;
 }

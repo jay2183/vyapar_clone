@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:toggle_switch/toggle_switch.dart';
+
 import 'package:vyapar_clone/core/common/widget/bottom_button.dart';
 import 'package:vyapar_clone/core/common/widget/custom_add_item_button.dart';
 import 'package:vyapar_clone/core/common/widget/custom_text_field.dart';
 import 'package:vyapar_clone/core/constatnts/colors.dart';
-import 'package:vyapar_clone/core/constatnts/text_style.dart';
+
 import 'package:vyapar_clone/presentation/home_screen/sub_screens/add_item.dart';
 import 'package:vyapar_clone/presentation/home_screen/widget/date_invoice_widget.dart';
 import 'package:vyapar_clone/presentation/home_screen/widget/zigzag_widget.dart';
 
 
 
-class PurchaseScreen extends StatelessWidget {
+class AddReturnScreen extends StatelessWidget {
   final ValueNotifier<double> totalAmountNotifier = ValueNotifier(0.0);
   final ValueNotifier<double> receivedAmountNotifier = ValueNotifier(0.0);
   final ValueNotifier<bool> isReceivedChecked = ValueNotifier(false);
@@ -30,7 +30,8 @@ class PurchaseScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(onPressed: ()=> Get.back(), icon:const Icon(Icons.arrow_back)),
-        title:const Text("Purchase"),
+        title:const Text("Debit Note"),
+        actions: [Icon(Icons.settings_outlined,color: Colors.black54,size: 24.sp,),SizedBox(width: 10.w,)],
        
       ),
       body: Stack(
@@ -43,10 +44,10 @@ class PurchaseScreen extends StatelessWidget {
                   SizedBox(
                     child: Column(
                       children: [
-                        DateInvoiceWidget(invoiceNumber: "10120",titleOne:  "Bill No.",titleTwo: "Date",),
+                        DateInvoiceWidget(invoiceNumber: "10120",titleOne:  "Return No.",titleTwo: "Date",),
                         SizedBox(height: screenHeight * 0.01),
                         Container(
-                          height: screenHeight * 0.3,
+                          height: screenHeight * 0.33,
                           color: Colors.white,
                           padding: EdgeInsets.symmetric(
                               horizontal: screenWidth * 0.03),
@@ -59,9 +60,25 @@ class PurchaseScreen extends StatelessWidget {
                               ),
                               SizedBox(height: screenHeight * 0.03),
                               CustomTextFormField(
+                                labelText: "Bill No",
+                                hintText: "Enter bill no.",
+                              ),
+                              SizedBox(height: screenHeight * 0.03),
+                              Row(children: [
+
+                                Expanded(child: CustomTextFormField(
+                                  isEditable: false,
+                                labelText: "Bill Date",
+                                hintText: "Bill Date",
+                                suffixIconWidget: Icon(Icons.calendar_month_outlined,color: Colorconst.cGrey,size: 15.sp,),
+                                
+                              )),
+                              SizedBox(width: 10.w,),
+                                Expanded(child: CustomTextFormField(
                                 labelText: "Phone Number",
                                 hintText: "Enter Phone Number",
-                              ),
+                              )),
+                              ],),
                               SizedBox(height: screenHeight * 0.03),
                               AddItemButton(
                                 onTap: () {
@@ -164,29 +181,8 @@ class PurchaseScreen extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Container(
-                                              width: screenHeight * .02,
-                                              height: screenHeight * .02,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.blue,
-                                                    width: 2.w),
-                                                borderRadius:
-                                                    BorderRadius.circular(3.r),
-                                                color: isChecked
-                                                    ? Colors.blue
-                                                    : Colors.transparent,
-                                              ),
-                                              child: isChecked
-                                                  ? Center(
-                                                    child: Icon(Icons.check,
-                                                        color: Colors.white,
-                                                        size: 13.sp),
-                                                  )
-                                                  : null,
-                                            ),
-                                            SizedBox(width: screenWidth * .03),
-                                           const Text("Paid",
+                                            
+                                           const Text("Received",
                                                 style: TextStyle(fontSize: 14,color: Colors.black,fontWeight:FontWeight.w500 )),
                                             SizedBox(width: screenWidth * .53),
                                           
@@ -319,8 +315,10 @@ class PurchaseScreen extends StatelessWidget {
                                       // SizedBox(
                                       //   width: screenWidth * .01,
                                       // ),
-                                     const Text("Cash"),
-                                   const   Icon(Icons.arrow_drop_down)
+                                      SizedBox(width: 5.w,),
+                                     const Text("Cash",style: TextStyle(color: Colors.black),),
+                                   const   Icon(Icons.arrow_drop_down),
+                                   SizedBox(width: 6.w,),
                                     ],
                                   ),
                                   SizedBox(
@@ -347,7 +345,7 @@ class PurchaseScreen extends StatelessWidget {
                                       SizedBox(
                                         width: screenWidth * .4,
                                       ),
-                                      Text("Select State"),
+                                      Text("Select State",style:  TextStyle(color: Colors.black,fontSize: 14.sp),),
                                       Icon(Icons.arrow_drop_down)
                                     ],
                                   ),
@@ -379,13 +377,13 @@ class PurchaseScreen extends StatelessWidget {
                                     // padding: EdgeInsets.all(10),
                                     // height: screenHeight * .18,
                                     height: screenHeight * .11,
-                                    width: screenWidth * .29,
+                                    width: screenWidth * .27,
                                     color: Colorconst.cwhite,
                                     child: Container(
                                       width: 60,
                                       height: 10,
                                       decoration: BoxDecoration(
-                                        color: Colors.grey.shade200,
+                                        color: Colors.white,
                                         borderRadius: BorderRadius.circular(8.0),
                                         border: Border.all(color: Colors.grey),
                                       ),
@@ -398,6 +396,7 @@ class PurchaseScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  // SizedBox(width: 5.w,)
                                  
                                 ],
                               ),
@@ -459,30 +458,7 @@ class PurchaseScreen extends StatelessWidget {
             ),
           ),
           // Positioned text above the bottom button
-          Positioned(
-            bottom: 39,
-            left: 0,
-            right: 0,
-            child: Container(
-              color: Colorconst.cLightPink,
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Your Current Plan May not support some features",
-                    style: interFontGrey(context, fontsize: 12),
-                    // textAlign: TextAlign.center,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    size: screenWidth * 0.020,
-                    color: Colorconst.cGrey,
-                  )
-                ],
-              ),
-            ),
-          ),
+          
           // Bottom button fixed at the bottom
           Positioned(
             bottom: 0,

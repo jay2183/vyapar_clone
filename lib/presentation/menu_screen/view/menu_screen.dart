@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vyapar_clone/presentation/menu_screen/widget/custom_page_view.dart';
 
-import '../sub_menu_screen/purchase_screen.dart';
+import '../sub_menu_screen/purchase_screens/payment_list_screen.dart';
+import '../sub_menu_screen/purchase_screens/purchase_list_screen.dart';
+import '../sub_menu_screen/purchase_screens/purchase_order_list.dart';
+import '../sub_menu_screen/purchase_screens/purchase_return_list.dart';
+
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -126,22 +130,22 @@ class _MenuScreenState extends State<MenuScreen> {
       {
         'icon': Icons.shopping_cart,
         'label': 'Purchase',
-        'onTap': ()=>Get.to(()=>PurchaseScreen())
+        'onTap': ()=>Get.to(()=>PurchaseListScreen())
       },
       {
         'icon': Icons.payment_outlined,
         'label': 'Payment-Out',
-        'onTap': () {/*  onTap action */}
+        'onTap': () => Get.to(()=>PaymentListScreen())
       },
       {
         'icon': Icons.assignment_return,
         'label': 'Purchase Return',
-        'onTap': () {/*  onTap action */}
+        'onTap': () => Get.to(()=>PurchaseReturnListScreen())
       },
       {
         'icon': Icons.receipt,
         'label': 'Purchase Order',
-        'onTap': () {/*  onTap action */}
+        'onTap': ()=> Get.to(()=>PurchaseOrderListScreen())
       },
     ]);
   }

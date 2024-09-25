@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
+
 import 'package:vyapar_clone/presentation/home_screen/view/home_screen.dart';
 import 'package:vyapar_clone/presentation/menu_screen/view/menu_screen.dart';
 

@@ -3,7 +3,9 @@ import 'package:vyapar_clone/core/constatnts/colors.dart';
 import 'package:vyapar_clone/core/constatnts/text_style.dart';
 
 class BottomButton extends StatelessWidget {
-  BottomButton({super.key, this.onClickSaveNew, this.onClickSave});
+  BottomButton({super.key, this.onClickSaveNew, this.onClickSave,this.saveBackGroundClr,this.isOnlyTwoButtons});
+  final Color? saveBackGroundClr;
+  final bool? isOnlyTwoButtons;
 
   final Function()? onClickSaveNew;
   final Function()? onClickSave;
@@ -39,7 +41,7 @@ class BottomButton extends StatelessWidget {
                   child: GestureDetector(
                 onTap: onClickSave,
                 child: Container(
-                  color: Colors.blue,
+                  color:saveBackGroundClr?? Colors.blue,
                   child: Center(
                       child: Text(
                     "Save",
@@ -52,10 +54,10 @@ class BottomButton extends StatelessWidget {
               )),
             ],
           )),
-          SizedBox(
+         isOnlyTwoButtons ==null? SizedBox(
             width: screenWidth * .06,
-          ),
-          Transform(
+          ):const SizedBox(),
+         isOnlyTwoButtons ==null? Transform(
             transform: Matrix4.diagonal3Values(-1, 1, 1),
             alignment: Alignment.center,
             child: Icon(
@@ -63,7 +65,7 @@ class BottomButton extends StatelessWidget {
               size: 23,
               color: Colors.blue,
             ),
-          )
+          ):SizedBox()
         ],
       ),
     );

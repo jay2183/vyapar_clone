@@ -9,14 +9,15 @@ class CustomTextFormField extends StatelessWidget {
     this.labelText,
     this.keyboardType,
     this.isEditable,
-    this.suffixIconWidget
+    this.suffixIconWidget,
+    this.onChanged
   });
   final String? hintText;
   final String? labelText;
   final TextInputType? keyboardType;
   final bool? isEditable;
   final Widget? suffixIconWidget;
-  // final Function(String?)?onChanged;
+  final Function(String?)?onChanged;
   // final Function(String?)?onFieldSubmitted;
   // final Function(PointerDownEvent)?onTapOutside;
   //final TextEditingController? controller;
@@ -25,7 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
+      onChanged: onChanged,
       keyboardType: keyboardType,
       style: interFontBlack(context, fontsize: 10),
       decoration: InputDecoration(

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:vyapar_clone/presentation/menu_screen/widget/custom_page_view.dart';
 
 import '../sub_menu_screen/expenses/expense_detail.dart';
+import '../sub_menu_screen/my_online_store/manage_item_screen.dart';
 import '../sub_menu_screen/purchase_screens/payment_list_screen.dart';
 import '../sub_menu_screen/purchase_screens/purchase_list_screen.dart';
 import '../sub_menu_screen/purchase_screens/purchase_order_list.dart';
@@ -147,6 +148,30 @@ class _MenuScreenState extends State<MenuScreen> {
         'icon': Icons.receipt,
         'label': 'Purchase Order',
         'onTap': ()=> Get.to(()=>PurchaseOrderListScreen())
+      },
+    ]);
+  }
+  void _showOnlineStorePopup(BuildContext context) {
+    _showCustomPopup(context, [
+      {
+        'icon': Icons.dashboard_outlined,
+        'label': 'Dashboard',
+        'onTap': ()  {}
+      },
+      {
+        'icon': Icons.list_alt_outlined,
+        'label': 'Manage Items',
+        'onTap': ()  => Get.to(()=>ManageItemScreen())
+      },
+      {
+        'icon': Icons.assignment_return,
+        'label': 'Manage Orders',
+        'onTap': ()  {}
+      },
+      {
+        'icon': Icons.receipt,
+        'label': 'Purchase Order',
+        'onTap': ()  {}
       },
     ]);
   }
@@ -476,7 +501,9 @@ class _MenuScreenState extends State<MenuScreen> {
                         Get.to(()=>ExpenseDetailScreen())
                       ),
                       buildGridItem(
-                          Icons.home_outlined, 'My Online Store', () {}),
+                          Icons.home_outlined, 'My Online Store', () {
+                            _showOnlineStorePopup(context);
+                          }),
                       buildGridItem(Icons.note_outlined, 'Report', () {}),
                     ],
                   ),

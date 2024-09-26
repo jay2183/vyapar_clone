@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:vyapar_clone/core/common/widget/bottom_button.dart';
 import 'package:vyapar_clone/core/common/widget/custom_add_item_button.dart';
@@ -25,7 +27,10 @@ class AddSaleInvoiceScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colorconst.cSecondaryGrey,
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(onPressed: () {
+
+          Get.back();
+        }, icon: Icon(Icons.arrow_back)),
         title: Text("Sale"),
         actions: [
           ToggleSwitch(
@@ -78,6 +83,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                               ),
                               SizedBox(height: screenHeight * 0.03),
                               CustomTextFormField(
+                                keyboardType:TextInputType.number,
                                 labelText: "Phone Number",
                                 hintText: "Enter Phone Number",
                               ),
@@ -109,6 +115,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                         Text(
                           "Total Amount",
                           style: TextStyle(
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
@@ -126,6 +133,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                 ),
                               ),
                               TextFormField(
+                                
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   hintText: "₹",
@@ -142,7 +150,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                     receivedAmountNotifier.value = parsedValue;
                                   }
                                 },
-                                style: TextStyle(fontSize: screenWidth * 0.04),
+                                style: TextStyle(fontSize: screenWidth * 0.04,color: Colors.black),
                               ),
                             ],
                           ),
@@ -183,13 +191,13 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                           children: [
                                             Container(
                                               width: screenWidth * .038,
-                                              height: screenHeight * .03,
+                                              height: screenHeight * .017,
                                               decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: Colors.blue,
-                                                    width: 3),
+                                                    width: 2.w),
                                                 borderRadius:
-                                                    BorderRadius.circular(5),
+                                                    BorderRadius.circular(2),
                                                 color: isChecked
                                                     ? Colors.blue
                                                     : Colors.transparent,
@@ -202,7 +210,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                             ),
                                             SizedBox(width: screenWidth * .01),
                                             Text("Received",
-                                                style: TextStyle(fontSize: 14)),
+                                                style: TextStyle(fontSize: 14,color: Colors.black)),
                                             SizedBox(width: screenWidth * .5),
                                             SizedBox(
                                               width: screenWidth * 0.25,
@@ -247,7 +255,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                                       style: TextStyle(
                                                           fontSize:
                                                               screenWidth *
-                                                                  0.04),
+                                                                  0.04,color: Colors.black),
                                                       initialValue:
                                                           isReceivedChecked
                                                                   .value
@@ -284,7 +292,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                       SizedBox(width: screenWidth * .53),
                                       Text("₹ ",
                                           style: TextStyle(
-                                              fontSize: screenWidth * 0.04)),
+                                              fontSize: screenWidth * 0.04,color: Colors.green)),
                                       Text("${balanceDue.toStringAsFixed(2)}",
                                           style: TextStyle(
                                               color: Colors.green,
@@ -362,47 +370,50 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: screenHeight * .01),
-                            Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  height: screenHeight * .18,
-                                  width: screenWidth * .7,
-                                  color: Colorconst.cwhite,
-                                  child: Center(
-                                    child: TextFormField(
-                                      decoration: const InputDecoration(
-                                        labelText: 'Description',
-                                        hintText: 'Add Note',
-                                        border: OutlineInputBorder(),
-                                      ),
-                                      maxLines: 3,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  height: screenHeight * .18,
-                                  width: screenWidth * .29,
-                                  color: Colorconst.cwhite,
-                                  child: Container(
-                                    width: 60,
-                                    height: 10,
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.shade200,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(color: Colors.grey),
-                                    ),
+                            Container(
+                              color: Colors.white,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    height: screenHeight * .18,
+                                    width: screenWidth * .7,
+                                    color: Colorconst.cwhite,
                                     child: Center(
-                                      child: Icon(
-                                        Icons.add_a_photo,
-                                        color: Colors.blue,
-                                        size: 30,
+                                      child: TextFormField(
+                                        decoration: const InputDecoration(
+                                          labelText: 'Description',
+                                          hintText: 'Add Note',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                        maxLines: 3,
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    padding: EdgeInsets.all(10),
+                                    height: screenHeight * .13,
+                                    width: screenWidth * .29,
+                                    color: Colorconst.cwhite,
+                                    child: Container(
+                                      width: 60,
+                                      height: 10,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        border: Border.all(color: Colors.grey),
+                                      ),
+                                      child:const Center(
+                                        child: Icon(
+                                          Icons.add_a_photo,
+                                          color: Colors.blue,
+                                          size: 30,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             Container(
                               height: screenHeight * .2,

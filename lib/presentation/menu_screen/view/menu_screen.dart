@@ -8,6 +8,7 @@ import '../sub_menu_screen/purchase_screens/payment_list_screen.dart';
 import '../sub_menu_screen/purchase_screens/purchase_list_screen.dart';
 import '../sub_menu_screen/purchase_screens/purchase_order_list.dart';
 import '../sub_menu_screen/purchase_screens/purchase_return_list.dart';
+import '../sub_menu_screen/reports/view.dart';
 
 
 class MenuScreen extends StatefulWidget {
@@ -504,7 +505,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           Icons.home_outlined, 'My Online Store', () {
                             _showOnlineStorePopup(context);
                           }),
-                      buildGridItem(Icons.note_outlined, 'Report', () {}),
+                      buildGridItem(Icons.note_outlined, 'Report', () => Get.to(()=>ReportScreen())),
                     ],
                   ),
                 ],

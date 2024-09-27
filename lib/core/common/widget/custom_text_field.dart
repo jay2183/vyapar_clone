@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vyapar_clone/core/constatnts/colors.dart';
 import 'package:vyapar_clone/core/constatnts/text_style.dart';
 
@@ -26,16 +27,20 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       onChanged: onChanged,
       keyboardType: keyboardType,
-      style: interFontBlack(context, fontsize: 10),
+      style: interFontBlack(context, fontsize: 14.sp,color: Colors.black),
       decoration: InputDecoration(
+        
         suffixIcon: suffixIconWidget,
         enabled: isEditable?? true,
         hintText: hintText ?? "Customer Name *",
         labelText: labelText ?? "Customer Name *",
         labelStyle: interFontGrey(context, fontsize: 15),
+        contentPadding: EdgeInsets.symmetric(vertical: 14.h,horizontal: 10.w),
         disabledBorder: OutlineInputBorder(
+          
           
             borderSide: BorderSide(width: 2, color: Colorconst.cGrey),
             borderRadius: BorderRadius.circular(5)),

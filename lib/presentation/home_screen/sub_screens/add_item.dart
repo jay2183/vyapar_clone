@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vyapar_clone/core/common/widget/custom_dropdown.dart';
 import 'package:vyapar_clone/core/common/widget/custom_text_field.dart';
 import 'package:vyapar_clone/core/common/widget/verticle_divider.dart';
@@ -118,6 +119,7 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                           children: [
                             Expanded(
                                 child: CustomTextFormField(
+
                               hintText: "e.g. Chocolate Cake",
                               labelText: "Item Name",
                             )),
@@ -177,13 +179,15 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                           children: [
                             Expanded(
                               child: TextFormField(
+                                style:TextStyle(color: Colors.black,fontSize: 14.sp),
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(vertical: 14.h,horizontal: 10.w),
                                     border: OutlineInputBorder(),
                                     hintText: "Rate (Price/Unit)",
                                     labelText: "Price *",
                                     labelStyle:
-                                        TextStyle(color: Colorconst.cGrey,fontSize: 15)),
+                                        TextStyle(color: Colorconst.cGrey,fontSize: 14.sp)),
                                 onChanged: (value) {
                                   setState(() {
                                     isPriceEntered = value.isNotEmpty;

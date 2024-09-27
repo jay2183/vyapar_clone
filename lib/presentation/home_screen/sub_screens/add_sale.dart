@@ -445,7 +445,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                       child: Padding(
                                         padding: EdgeInsets.only(
                                             left: screenWidth * .1),
-                                        child: Row(
+                                        child: const Row(
                                           children: [
                                             Icon(
                                               Icons.document_scanner_outlined,

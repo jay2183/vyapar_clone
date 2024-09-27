@@ -6,6 +6,8 @@ import 'gst_reports/gst-2.dart';
 import 'gst_reports/gst-r3b.dart';
 import 'gst_reports/gst-trasaction-report.dart';
 import 'gst_reports/gst_r_9_report.dart';
+import 'gst_reports/sac_report.dart';
+import 'gst_reports/sale_summary.dart';
 
 
 class ReportScreen extends StatelessWidget {
@@ -142,8 +144,8 @@ class ReportScreen extends StatelessWidget {
           buildSubItem('GSTR-3B', context, () => Get.to(()=>GstR3bScreen())),
           buildSubItem('GST Transction report', context, () => Get.to(()=>GstTrasactionReportScreen())),
           buildSubItem('GSTR-9', context, () => Get.to(()=>GstR9ReportScreen())),
-          buildSubItem('Sale Summary by HSN', context, () {}),
-          buildSubItem('SAC Report', context, () {}),
+          buildSubItem('Sale Summary by HSN', context,()=> Get.to( () =>SaleSummaryScreen())),
+          buildSubItem('SAC Report', context, () => Get.to(()=>SacReportScreen())),
 
           //Forth  Category - Item/Stock Reports
 

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:vyapar_clone/core/constatnts/colors.dart';
 
-class InvoicePrintScreen extends StatelessWidget {
-  const InvoicePrintScreen({super.key});
+class PartyScreen extends StatelessWidget {
+  const PartyScreen({super.key});
   final int sIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class InvoicePrintScreen extends StatelessWidget {
         backgroundColor: Colorconst.cSecondaryBlue,
         elevation: 0,
         title: Text(
-          "Invoice Print",
+          "Party",
           textAlign: TextAlign.center,
           style: GoogleFonts.inter(
               color: Colors.black,
@@ -42,14 +42,6 @@ class InvoicePrintScreen extends StatelessWidget {
         ),
         actions: [
           Icon(
-            Icons.store_outlined,
-            size: 22.sp,
-            color: Colors.black,
-          ),
-          SizedBox(
-            width: 13.w,
-          ),
-          Icon(
             Icons.search,
             size: 22.sp,
             color: Colors.black,
@@ -60,242 +52,70 @@ class InvoicePrintScreen extends StatelessWidget {
         ],
       ),
 
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [
-            Colors.white,
-            Colors.white,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        )),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              headerTabButton(),
-              rowCollection(
-                  isTurnedOn: true,
-                  isErroIcon: false,
-                  title: "Make Regular Printer Default"),
-              _themesWidget(),
-              _printCompanyInfo(),
-              _totalsTaxes(),
-              _footer(),
-              SizedBox(
-                height: 80.h,
-              )
-            ],
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                colors: [
+                  Colors.white,
+                  Colors.white,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              )),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    _taxesWidget(),
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+          
+        ],
       ),
     );
   }
 
-  Widget _themesWidget() {
+  Widget _taxesWidget() {
     return Column(
       children: [
-        headerBlue(headerName: "Themes"),
+        // headerBlue(headerName: "Themes"),
+       
         rowCollection(
+          title: "GSTIN Number",
+          isTurnedOn: true,
+        ),
+        rowCollection(
+          title: "Party Grouping",
+          isTurnedOn: false,
+        ),
+         rowCollection(
             isTurnedOn: true,
-            isErroIcon: true,
-            title: "Change Theme and Colors",
+            title: "Party Addinal Fields",
             grandRightIcon: Icon(
               Icons.arrow_forward_ios_outlined,
               size: 12.sp,
               color: Colors.black,
             )),
-        rowCollection(
-            isTurnedOn: false,
-            isErroIcon: true,
-            title: "Print text size",
-            rightSideText: "Medium",
-            grandRightIcon: Icon(
-              Icons.arrow_drop_down,
-              size: 20.sp,
-              color: Colors.black87,
-            )),
-        rowCollection(
-            isTurnedOn: false,
-            isErroIcon: true,
-            title: "Page size",
-            rightSideText: "A4(210 * 297 mm)",
-            grandRightIcon: Icon(
-              Icons.arrow_drop_down,
-              size: 20.sp,
-              color: Colors.black87,
-            )),
-        rowCollection(
-            isTurnedOn: false,
-            isErroIcon: true,
-            title: "Orientation",
-            rightSideText: "Potrait",
-            grandRightIcon: Icon(
-              Icons.arrow_drop_down,
-              size: 20.sp,
-              color: Colors.black87,
-            )),
-      ],
-    );
-  }
 
-  Widget _printCompanyInfo() {
-    return Column(
-      children: [
-        headerBlue(
-            headerName: "Print Company Info/Header",
-            rightIcon: Icon(
-              Icons.edit,
-              size: 20.sp,
-              color: Colors.black54,
-            )),
         rowCollection(
-            isTurnedOn: true, title: "Print repeat header in all pages"),
-        rowCollection(isTurnedOn: true, title: "Print Company Name"),
-        rowCollection(
-            isTurnedOn: false,
-            title: "Company Name Text Size",
-            rightSideText: "Large",
-            grandRightIcon: Icon(
-              Icons.arrow_drop_down,
-              size: 20.sp,
-              color: Colors.black87,
-            )),
-        rowCollection(isTurnedOn: true, title: "Comapany logo"),
-        rowCollection(isTurnedOn: true, title: "Address"),
-        rowCollection(isTurnedOn: true, title: "Email"),
-        rowCollection(isTurnedOn: true, title: "Phone number"),
-        rowCollection(isTurnedOn: true, title: "GSTIN on Sale"),
-        rowCollection(
-            isTurnedOn: false,
-            title: "Print Bill of Supply for non tax invoices"),
-        plusMinusRow(),
-        rowCollection(isTurnedOn: false, title: "Print Original/Duplicate"),
-        rowCollection(
-            isTurnedOn: false,
-            title: "Change Transaction Names",
-            grandRightIcon: Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: Colors.black,
-              size: 12.sp,
-            )),
-      ],
-    );
-  }
-
-  Widget _totalsTaxes() {
-    return Column(
-      children: [
-        headerBlue(
-            headerName: "Totals & Taxes",
-            rightIcon: Icon(
-              Icons.edit,
-              size: 20.sp,
-              color: Colors.black54,
-            )),
-        plusMinusRow(title: "Min. No. of rows in Item Table"),
-        rowCollection(
-            isTurnedOn: false,
-            title: "Item Table Customization",
-            grandRightIcon: Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: Colors.black,
-              size: 12.sp,
-            )),
-        rowCollection(
-          title: "Total Item Quality",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-          title: "Amount with Decimal(eg 0.00)",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-          title: "Received amount",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-          title: "Balance amount",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-          title: "Print Current Balance of Party",
+          title: "Party Shipping Address",
           isTurnedOn: false,
         ),
         rowCollection(
-          title: "Tax details",
+          title: "Invite parties to add themselves",
           isTurnedOn: true,
         ),
         rowCollection(
-          title: "Amount Grouping",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-            title: "Amount in words format",
-            isTurnedOn: true,
-            rightSideText: "Indian \nEg 1,00,00,000",
-            grandRightIcon: Icon(
-              Icons.arrow_drop_down,
-              size: 20.sp,
-              color: Colors.black87,
-            )),
-        rowCollection(
-          title: "You Saved",
-          isTurnedOn: true,
-        ),
-      ],
-    );
-  }
-
-  Widget _footer() {
-    return Column(
-      children: [
-        headerBlue(
-            headerName: "Footer",
-            rightIcon: Icon(
-              Icons.edit,
-              size: 20.sp,
-              color: Colors.black54,
-            )),
-        rowCollection(
-          title: "Print description",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-            isTurnedOn: false,
-            title: "Item Table Customization",
-            grandRightIcon: Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: Colors.black,
-              size: 12.sp,
-            )),
-        rowCollection(
-          title: "Print Received by details",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-          title: "Print Delivered by details",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-          title: "Print Signature Text",
-          isTurnedOn: true,
-        ),
-        rowCollection(
-            isTurnedOn: false,
-            title: "Item Table Customization",
-            grandRightIcon: Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: Colors.black,
-              size: 12.sp,
-            )),
-        rowCollection(
-          title: "Payment mode",
-          isTurnedOn: false,
-        ),
-        rowCollection(
-          title: "Print Acknowledgement",
+          title: "Loyalty Points",
           isTurnedOn: false,
         ),
       ],
@@ -423,10 +243,12 @@ class InvoicePrintScreen extends StatelessWidget {
     );
   }
 
-  TextStyle settingTxtStyle() {
+  TextStyle settingTxtStyle({
+    Color? color,
+  }) {
     return GoogleFonts.inter(
         wordSpacing: -2.w,
-        color: Colors.black87,
+        color: color ?? Colors.black87,
         fontSize: 12.sp,
         fontWeight: FontWeight.w500);
   }

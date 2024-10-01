@@ -91,10 +91,10 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back)),
+            icon:const Icon(Icons.arrow_back)),
         title: Text(
           "Add Item To Sale",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.sp),
         ),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.settings_outlined))
@@ -161,9 +161,10 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                       SizedBox(
                                         width: screenWidth * .25,
                                       ),
-                                      Icon(
+                                     const Icon(
                                         Icons.arrow_drop_down,
                                         color: Colorconst.cGrey,
+
                                       )
                                     ],
                                   ),
@@ -220,9 +221,10 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                       SizedBox(
                                         width: screenWidth * .1,
                                       ),
-                                      Icon(
+                                     const Icon(
                                         Icons.arrow_drop_down,
                                         color: Colorconst.cGrey,
+                                      
                                       )
                                     ],
                                   ),
@@ -252,11 +254,11 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                     style: interFontBlack(context),
                                   ),
                                   SizedBox(
-                                    height: 10,
+                                    height: 10.h,
                                   ),
                                   const VerticleDivider(),
                                   SizedBox(
-                                    height: 10,
+                                    height: 10.h,
                                   ),
                                   Row(
                                     children: [
@@ -268,7 +270,7 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                             style: interFontBlack(context),
                                           ),
                                           SizedBox(
-                                            width: 4,
+                                            width: 4.w,
                                           ),
                                           Text(
                                             "(Rate x Qty)",
@@ -324,7 +326,7 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                                         contentPadding:
                                                             EdgeInsets.symmetric(
                                                                 vertical:
-                                                                    5), // Adjust padding
+                                                                    5.h), // Adjust padding
                                                       ),
                                                       style: interFontBlack(
                                                           context),
@@ -348,12 +350,12 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsets.symmetric(
-                                                              horizontal: 12),
+                                                              horizontal: 12.w),
                                                       child: Icon(
                                                         Icons.percent,
                                                         color: Colorconst
                                                             .cYellowLight,
-                                                        size: 13,
+                                                        size: 13.sp,
                                                       ),
                                                     ),
                                                   ),
@@ -383,7 +385,7 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsets.symmetric(
-                                                              horizontal: 12),
+                                                              horizontal: 12.w),
                                                       child: const SizedBox(),
                                                     ),
                                                   ),
@@ -465,7 +467,7 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsets.symmetric(
-                                                              horizontal: 12),
+                                                              horizontal: 12.w),
                                                       child: const SizedBox(),
                                                     ),
                                                   ),
@@ -523,6 +525,7 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                               keyboardType:
                                                   TextInputType.number,
                                               decoration: InputDecoration(
+                                                
                                                 hintText: "₹",
                                                 border: InputBorder.none,
                                                 contentPadding: EdgeInsets.only(
@@ -530,7 +533,7 @@ class _AddItemSaleScreenState extends State<AddItemSaleScreen> {
                                                 ),
                                               ),
                                               style: TextStyle(
-                                                  fontSize: screenWidth * 0.04),
+                                                  fontSize: screenWidth * 0.04,color: Colors.black),
                                             ),
                                           ],
                                         ),

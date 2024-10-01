@@ -43,7 +43,7 @@ class CustomTextFormField extends StatelessWidget {
       autofocus:autoFocus??false ,
       onChanged: onChanged,
       keyboardType: keyboardType,
-      style: interFontBlack(context, fontsize: 14.sp,color: Colors.black),
+      style: interFontBlack(context, fontsize: 15.sp,color: Colors.black),
       decoration: InputDecoration(
         
         filled: isFiled?? false,

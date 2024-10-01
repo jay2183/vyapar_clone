@@ -46,7 +46,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
             inactiveFgColor: Colors.white,
             initialLabelIndex: 0,
             totalSwitches: 2,
-            labels: ['Credit', 'Cash'],
+            labels:const ['Credit', 'Cash'],
             radiusStyle: true,
             onToggle: (index) {
               print('switched to: $index');
@@ -64,44 +64,42 @@ class AddSaleInvoiceScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: screenHeight * .5),
               child: Column(
                 children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        DateInvoiceWidget(invoiceNumber: "10120"),
-                        SizedBox(height: screenHeight * 0.01),
-                        Container(
-                          height: screenHeight * 0.3,
-                          color: Colors.white,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: screenWidth * 0.03),
-                          child: Column(
-                            children: [
-                              SizedBox(height: screenHeight * 0.01),
-                              CustomTextFormField(
-                                labelText: "Customer *",
-                                hintText: "Enter Customer",
-                              ),
-                              SizedBox(height: screenHeight * 0.03),
-                              CustomTextFormField(
-                                keyboardType:TextInputType.number,
-                                labelText: "Phone Number",
-                                hintText: "Enter Phone Number",
-                              ),
-                              SizedBox(height: screenHeight * 0.03),
-                              AddItemButton(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              AddItemSaleScreen()));
-                                },
-                              ),
-                            ],
-                          ),
+                  Column(
+                    children: [
+                      DateInvoiceWidget(invoiceNumber: "10120"),
+                      SizedBox(height: screenHeight * 0.01),
+                      Container(
+                        height: screenHeight * 0.3,
+                        color: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: screenWidth * 0.03),
+                        child: Column(
+                          children: [
+                            SizedBox(height: screenHeight * 0.01),
+                            CustomTextFormField(
+                              labelText: "Customer *",
+                              hintText: "Enter Customer",
+                            ),
+                            SizedBox(height: screenHeight * 0.03),
+                            CustomTextFormField(
+                              keyboardType:TextInputType.number,
+                              labelText: "Phone Number",
+                              hintText: "Enter Phone Number",
+                            ),
+                            SizedBox(height: screenHeight * 0.03),
+                            AddItemButton(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AddItemSaleScreen()));
+                              },
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: screenHeight * 0.005),
                   Padding(
@@ -117,7 +115,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                           ),
                         ),
                         SizedBox(
@@ -133,9 +131,10 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                 ),
                               ),
                               TextFormField(
-                                
+                                 
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
+                                  hintStyle:TextStyle(fontSize: 14.sp,color: Colors.black) ,
                                   hintText: "₹",
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(
@@ -150,7 +149,8 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                     receivedAmountNotifier.value = parsedValue;
                                   }
                                 },
-                                style: TextStyle(fontSize: screenWidth * 0.04,color: Colors.black),
+                              
+                                style: TextStyle(fontSize: 14.sp,color: Colors.black),
                               ),
                             ],
                           ),
@@ -190,27 +190,29 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                               MainAxisAlignment.spaceAround,
                                           children: [
                                             Container(
-                                              width: screenWidth * .038,
-                                              height: screenHeight * .017,
+                                              width: 18.w,
+                                              height: 18.h,
                                               decoration: BoxDecoration(
                                                 border: Border.all(
                                                     color: Colors.blue,
                                                     width: 2.w),
                                                 borderRadius:
-                                                    BorderRadius.circular(2),
+                                                    BorderRadius.circular(2.r),
                                                 color: isChecked
                                                     ? Colors.blue
                                                     : Colors.transparent,
                                               ),
                                               child: isChecked
-                                                  ? Icon(Icons.check,
-                                                      color: Colors.white,
-                                                      size: 18)
+                                                  ? Center(
+                                                    child: Icon(Icons.check,
+                                                        color: Colors.white,
+                                                        size: 18.sp),
+                                                  )
                                                   : null,
                                             ),
                                             SizedBox(width: screenWidth * .01),
                                             Text("Received",
-                                                style: TextStyle(fontSize: 14,color: Colors.black)),
+                                                style: TextStyle(fontSize: 14.sp,color: Colors.black)),
                                             SizedBox(width: screenWidth * .5),
                                             SizedBox(
                                               width: screenWidth * 0.25,
@@ -288,7 +290,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                       Text("Balance Due",
                                           style: TextStyle(
                                               color: Colors.green,
-                                              fontSize: 14)),
+                                              fontSize: 14.sp)),
                                       SizedBox(width: screenWidth * .53),
                                       Text("₹ ",
                                           style: TextStyle(
@@ -296,7 +298,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                       Text("${balanceDue.toStringAsFixed(2)}",
                                           style: TextStyle(
                                               color: Colors.green,
-                                              fontSize: screenWidth * 0.03))
+                                              fontSize: screenWidth * 0.03),)
                                     ],
                                   );
                                 },
@@ -312,7 +314,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                             ),
                             SizedBox(height: screenHeight * .01),
                             Container(
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(10.r),
                               height: screenHeight * .25,
                               color: Colorconst.cwhite,
                               child: Column(
@@ -322,20 +324,23 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                       Text(
                                         "Payment Type",
                                         style:
-                                            TextStyle(color: Colorconst.cGrey),
+                                            TextStyle(color: Colorconst.cGrey,fontSize: 15.sp),
                                       ),
                                       SizedBox(
                                         width: screenWidth * .45,
                                       ),
                                       Icon(
                                         Icons.money,
-                                        color: Colorconst.Green,
+                                        color: Colorconst.Green, size: 20.sp,
                                       ),
                                       // SizedBox(
                                       //   width: screenWidth * .01,
                                       // ),
-                                      Text("Cash"),
-                                      Icon(Icons.arrow_drop_down)
+                                      SizedBox(width: 4.w,),
+                                      Text("Cash",style: TextStyle(color: Colors.black,fontSize: 13.sp),),
+                                      SizedBox(width: 4.w,),
+                                      Icon(Icons.arrow_drop_down,size: 20.sp,),
+                                     
                                     ],
                                   ),
                                   SizedBox(
@@ -343,27 +348,28 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      Icon(Icons.add, color: Colorconst.cBlue),
+                                      Icon(Icons.add, color: Colorconst.cBlue,size: 16.sp,),
                                       Text(
                                         "Add Payment Type",
                                         style:
-                                            TextStyle(color: Colorconst.cBlue),
+                                            TextStyle(color: Colorconst.cBlue,fontSize: 14.sp),
                                       ),
                                     ],
                                   ),
-                                  Divider(),
+                               const   Divider(),
                                   Row(
                                     children: [
                                       Text(
                                         "State of Supply",
                                         style:
-                                            TextStyle(color: Colorconst.cGrey),
+                                            TextStyle(color: Colorconst.cGrey,fontSize: 14.sp),
                                       ),
                                       SizedBox(
                                         width: screenWidth * .4,
                                       ),
-                                      Text("Select State"),
-                                      Icon(Icons.arrow_drop_down)
+                                      Text("Select State", style:
+                                            TextStyle(color: Colorconst.cGrey,fontSize: 14.sp),),
+                                      Icon(Icons.arrow_drop_down,size: 18.sp,color: Colors.black,)
                                     ],
                                   ),
                                 ],
@@ -375,7 +381,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.all(10),
+                                    padding: EdgeInsets.all(10.r),
                                     height: screenHeight * .18,
                                     width: screenWidth * .7,
                                     color: Colorconst.cwhite,
@@ -434,7 +440,7 @@ class AddSaleInvoiceScreen extends StatelessWidget {
                                       style: ButtonStyle(
                                         side: MaterialStateProperty.all(
                                             BorderSide(
-                                                color: Colors.black, width: 2)),
+                                                color: Colors.black, width: 2.w)),
                                         shape: MaterialStateProperty.all(
                                           RoundedRectangleBorder(
                                             borderRadius:
